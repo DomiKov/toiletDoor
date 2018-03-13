@@ -36,3 +36,5 @@ sudo ./Toiletdoor_rpi
 
 As of now, the only real-life application would be the door-open / door-close status. Unfortunately, I have not made it work wirelessly yet. Once I will, I will update this repository. Hopefully, it will also be running on Node-RED at that time. 
 
+If you need any help with seting this up, feel free to contact me at my e-mail: dominik.kovacik18@gmail.com
+
