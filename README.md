@@ -27,7 +27,7 @@ GPIO 10 - SPI0_MOSI                         PINB3 - MOSI
 GPIO 9  - SPI0_MISO                         PINB4 - MISO
 GPIO 11 - SPI0_SCLK                         PINB5 - SCK
 GPIO 8  - SPI0_CS0_N                        PINB2 - SS'
-GND                                         GND         - Grounds have to be common. 
+GND                                         GND         => Grounds have to be common. 
 
 Once this is connected, you should be able to receive the door status at on the RPi by executing the programme on the rasberry pi:
 
