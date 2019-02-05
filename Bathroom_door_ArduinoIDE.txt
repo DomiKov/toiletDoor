@@ -5,8 +5,7 @@
 #define WLAN_SSID       "Your SSID" 
 #define WLAN_PASS       "Your PW"
 
-#define MQTT_SERVER      "Your RPi IP addres" 	// Best to make your RPi IP addres static (otherwise the NODE
-					      	// might not connect as the RPi may have a different IP
+#define MQTT_SERVER      "Your RPi IP addres" 	// Make RPi IP addres static
 #define MQTT_PORT        1883                    
 #define MQTT_USERNAME    "Your Username" 	//Optional
 #define MQTT_PASSWORD    "Your Password" 	//Optional
@@ -33,7 +32,7 @@ void setup() {
  Serial.begin(115200); 
  delay(10); 
  
- // Setup button as an input (with external pull down). 
+ // Setup button as an input 
 pinMode(BUTTON_PIN, INPUT); 
 
  Serial.println(F("RPi-ESP-MQTT")); 
@@ -63,17 +62,15 @@ void loop() {
  // Ensure the connection to the MQTT server is alive (this will make the first 
  // connection and automatically reconnect when disconnected).  See the MQTT_connect 
  MQTT_connect(); 
- // this is our 'wait for incoming subscription packets' busy subloop 
- // try to spend your time here 
- // Here its read the subscription 
- 
+ // 'wait for incoming subscription packets' busy subloop 
+/***************************work_in_progress***************************************/ 
  Adafruit_MQTT_Subscribe *subscription; 
  while ((subscription = mqtt.readSubscription())) { 
    if (subscription == &bathroom_buzzer) { 
      char *message = (char *)bathroom_buzzer.lastread; 
      Serial.print(F("Got: ")); 
      Serial.println(message); 
-        // Check if the message was ON, OFF, or TOGGLE. 
+        // Check if the message was ON, OFF.
      if (strncmp(message, "ON", 2) == 0) { 
        // Turn the LED on. 
        digitalWrite(LED_PIN, HIGH); 
@@ -84,7 +81,7 @@ void loop() {
      } 
    } 
  } 
-
+/*************************************************************************************/
  delay(20); 
  //; 
  int button_second = digitalRead(BUTTON_PIN); 
