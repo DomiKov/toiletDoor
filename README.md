@@ -45,7 +45,7 @@ First do this: *sudo mosquitto_passwd -c /etc/mosquitto/passwd YourUsername*
 
 You will be asked to enter a password for the username you chose.
 
-Second, include this in the mosquitto.conf file. 
+Second, include this at the end of the mosquitto.conf file. 
 
 *allow_anonymous false
 password_file /etc/mosquitto/passwd*
