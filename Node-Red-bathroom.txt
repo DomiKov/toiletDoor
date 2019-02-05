@@ -1,15 +1,15 @@
 [
     {
-        "id": "5616a263.4df99c",
+        "id": "14dccbc5.540af4",
         "type": "tab",
         "label": "Flow 2",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "3b7f319d.664e7e",
+        "id": "18221f96.73694",
         "type": "ui_text",
-        "z": "5616a263.4df99c",
+        "z": "14dccbc5.540af4",
         "group": "8c0262a0.be6f7",
         "order": 0,
         "width": 0,
@@ -23,9 +23,9 @@
         "wires": []
     },
     {
-        "id": "8d732440.6b2c68",
+        "id": "601e517c.ae943",
         "type": "mqtt in",
-        "z": "5616a263.4df99c",
+        "z": "14dccbc5.540af4",
         "name": "Door_status",
         "topic": "YourUsername/bathroom/door",
         "qos": "2",
@@ -34,7 +34,7 @@
         "y": 282,
         "wires": [
             [
-                "3b7f319d.664e7e"
+                "18221f96.73694"
             ]
         ]
     },
