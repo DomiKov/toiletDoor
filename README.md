@@ -1,5 +1,5 @@
 # toiletDoor
-People say that necessity is the mother of invention. Not sure, it is laziness and this project is a proof of that.
+People say that necessity is the mother of invention. Not true, it is laziness and this project is a proof of that.
 
 The idea is that you will not have to check the bathroom physically to know whether it is ocuppied or not. Simply check the Node-Red UI to see whether the bathroom is occupied or not. This is great if you live with a lot of people and have a somewhat large house. The project is very simple and also quite quick to make.
 
