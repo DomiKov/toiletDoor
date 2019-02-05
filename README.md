@@ -39,7 +39,7 @@ If you have set up and uploaded everything correctly, you should be able to see 
 
 ## Security:
 
-To incorporate a little bit of securit into the MQTT messaging, you can set a username and a password for the RPi mosquitto broker. 
+To incorporate a little bit of security into the MQTT messaging, you can set a username and a password for the RPi mosquitto broker. 
 
 First do this: *sudo mosquitto_passwd -c /etc/mosquitto/passwd YourUsername*
 
