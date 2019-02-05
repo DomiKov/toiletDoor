@@ -1,0 +1,83 @@
+[
+    {
+        "id": "14dccbc5.540af4",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "18221f96.73694",
+        "type": "ui_text",
+        "z": "14dccbc5.540af4",
+        "group": "8c0262a0.be6f7",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "Vacancy",
+        "label": "Status:",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 377.00000381469727,
+        "y": 282.600004196167,
+        "wires": []
+    },
+    {
+        "id": "601e517c.ae943",
+        "type": "mqtt in",
+        "z": "14dccbc5.540af4",
+        "name": "Door_status",
+        "topic": "YourUsername/bathroom/door",
+        "qos": "2",
+        "broker": "f6153510.398318",
+        "x": 194.89992141723633,
+        "y": 282,
+        "wires": [
+            [
+                "18221f96.73694"
+            ]
+        ]
+    },
+    {
+        "id": "8c0262a0.be6f7",
+        "type": "ui_group",
+        "z": "",
+        "name": "Vacancy",
+        "tab": "d108a5c2.913408",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "f6153510.398318",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "Door_status",
+        "broker": "localhost",
+        "port": "1883",
+        "tls": "",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "d108a5c2.913408",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Bathroom",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
