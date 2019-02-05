@@ -11,16 +11,28 @@ This project is using a NodeMCU ESP8266 (https://www.lightinthebox.com/en/p/node
 **How it works:**
 
 
-The idea is very simple. If the bathroom door is closed, the bathroom is occupied. If it is open, the bathroom isn't occupied. To determine whether the bathroom doors are closed, a magnetic reed switch will be used. The circuit for the switch cannot get any simpler.
+The idea is very simple. If the bathroom door is closed, the bathroom is occupied. If it is open, the bathroom isn't occupied. To determine whether the bathroom doors are closed, a magnetic reed switch will be used. The circuit for the switch cannot get any simpler:
+
 ![image of circuit](https://github.com/DomiKov/toiletDoor/blob/master/Images/Bathroom_door.png). 
+
 It is just one 10k ohm resistor and one magnetic switch (like this one https://www.ebay.com/itm/Normally-Open-Closed-Magnetic-Switch-Door-Sensor-Alarm-Home-Window-Contact-Reed-/122892186998). 
 
 **How to install:**
 
 
-First, you need to setup your raspberry. I am using the latest release of Raspbian Stretch at the time of writing this (5th February 2019). You need to install Node-Red, unless it has already been installed. If you are not familiar with it, check some tutorials on how to use it. The official Node-Red website is a good source to begin with. You will also need to install mosquitto on your RPi (https://randomnerdtutorials.com/how-to-install-mosquitto-broker-on-raspberry-pi/). Set the Node-Red to start when the RPi boots and setup a static IP address for the RPi as well. Then import the flow (Node-Red-bathroom.txt) into the Node-Red. 
+First, you need to setup your raspberry. I am using the latest release of Raspbian Stretch at the time of writing this (5th February 2019). You need to install Node-Red, unless it has already been installed. If you are not familiar with it, check some tutorials on how to use it. The official Node-Red website is a good source to begin with. You will also need to install mosquitto on your RPi (https://randomnerdtutorials.com/how-to-install-mosquitto-broker-on-raspberry-pi/). Set the Node-Red to start when the RPi boots and setup a static IP address for the RPi as well. Then import the flow from https://github.com/DomiKov/toiletDoor/blob/master/Codes/Node-Red%20flows/Node-Red-bathroom.txt into the Node-Red. 
 
-The next step is to load your NodeMCU with the necessary code (Bathroom_door_ArduinoIDE.txt). Use Arduino IDE (or something else if you want, that is compatible with the NodeMCU) to upload the code in the repository. Don't forget to change the necessary things in the code (Wi-Fi name, Password, Server IP and etc.). You will need to download some things as well. The ESP8266 board manager; Adafruit ESP8266 library; Adafruit MQTT library and Adafruit SleepyDog. When you have everything ready, upload the code to the NodeMCU and connect the Switch with a resistor to the NodeMCU. For testing purposes, it is good to use a breadboard and if everything is working, make the circuit on a small veroboard. 
+The next step is to load your NodeMCU with the necessary code (https://github.com/DomiKov/toiletDoor/blob/master/Codes/NodeMCU/Bathroom_door.ino). Use Arduino IDE (or something else if you want, that is compatible with the NodeMCU) to upload the code in the repository. Don't forget to change the necessary things in the code (Wi-Fi name, Password, Server IP and etc.). You will need to download some things for the IDE:
+
+*The ESP8266 board manager*
+
+![image of circuit](https://github.com/DomiKov/toiletDoor/blob/master/Images/ESP8266_board_manager.PNG). 
+
+*Adafruit ESP8266 library; Adafruit MQTT library and Adafruit SleepyDog*
+
+![image of circuit](https://github.com/DomiKov/toiletDoor/blob/master/Images/Adafruit_libraries.PNG). 
+
+When you have everything ready, upload the code to the NodeMCU and connect the Switch with a resistor to the NodeMCU. For testing purposes, it is good to use a breadboard and if everything is working, make the circuit on a small veroboard. 
 
 If you have set up and uploaded everything correctly, you should be able to see the bathroom door status via Node-Red UI. If not, try to debug. Use serial monitor in Arduino IDE and debug node in the Node-Red.
 
