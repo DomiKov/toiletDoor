@@ -39,7 +39,7 @@ If you have set up and uploaded everything correctly, you should be able to see 
 
 ## Security:
 
-To incorporate a little bit of security into the MQTT messaging, you can set a username and a password for the RPi mosquitto broker. 
+To incorporate a little bit of securit into the MQTT messaging, you can set a username and a password for the RPi mosquitto broker. 
 
 First do this: *sudo mosquitto_passwd -c /etc/mosquitto/passwd YourUsername*
 
@@ -55,6 +55,9 @@ To access this file, write: *sudo nano /etc/mosquitto/mosquitto.conf*
 This will prohibit others to publish messages or subscribe to your MQTT broker (RPi) unless they provide the right username and password, which means that this username and password will have to be the same on the NodeMCU side.
 
 ## Conclusion:
+If you have done everything correctly, you should be able to see something like this on the UI of your Node-Red.
+
+![image of circuit](https://github.com/DomiKov/toiletDoor/blob/master/Images/Node_red_UI.PNG) 
 
 Feel free to use this as an inspiration for other fun projects. I plan to expand this by some sort of control from the RPi side (e.g. a buzzer that will be triggered via Node-Red and buzz in the bathroom for a while to let someone in the bathroom know that you are in a hurry and need to use it). Or maybe adding a humidity/temperature sensor. You could also use this as a template for other rooms/things in your house/workplace/etc.
 
