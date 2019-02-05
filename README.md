@@ -1,45 +1,35 @@
 # toiletDoor
-A school project that could be utilized at home.
-
 People say that necessity is the mother of invention. Not ture, it is laziness and this project is a proof of that.
 
-The idea is that you will not have to check the bathroom physically to know whether it is ocuppied or not. Simply use your raspberry to run a programme that will tell you the bathroom status. The main reason for doing this is that the house where I live is relatively large and it has 6 tennats with just 1 bathroom. This way I will not have to walk down all the way from my room to the bathroom only to find out that one of my roommates is taking a shower. 
+The idea is that you will not have to check the bathroom physically to know whether it is ocuppied or not. Simply check the Node-Red UI to see whether the bathroom is occupied or not. This is great if you live with a lot of people and have a somewhat large house. The project is very simple and also quite quick to make.
 
-First you have to pull the Toilet door folder as it has both the RPI and AVR codes. Then you have to upload the AVR to your Atmega. Note:This project is using Atmega328P. If you are using a different Atmega, you will most probably have to make some changes to the code. 
-You can also use an Arduino board as it also utilizes the Atmega328 chip. If necessary I can upload a file with instructions on how to use Arduino with Atmel Studio. 
+This project is using a NodeMCU ESP8266 (https://www.lightinthebox.com/en/p/nodemcu-esp8266-lua-wifi-internet-development-board_p6142020.html) and a Raspberry Pi 3 (but you can also use a Raspberry Zero with wi-fi connection), which has Node-Red running on it. Both the NodeMCU and RPi are connected to a wi-fi and are communicating with each other using MQTT. You will also need some sort of 5V power supply for the NodeMCU. I was using a phone charger with micro USB port for testing. You can use a powerbank as well. 
 
-Once you have uploaded the code to your Atmega, connect everything the LEDs (pay in mind that you also have to connect an appropriate resistor with the LED). To evaluate the door state / event, I was using a magnetic reed switch. This could be also applied in a real-life scenario, however, a button or a regular switch can be used for demonstration purposes. Do not forget to add a pull-down resistor to the switch. 
+The idea is very simple. If the bathroom door is closed, the bathroom is occupied. If it is open, the bathroom isn't occupied. To determine whether the bathroom doors are closed, a magnetic reed switch will be used. The circuit for the switch cannot get any simpler. 
+It is just one 10k ohm resistor and one magnetic switch (like this one https://www.ebay.com/itm/Normally-Open-Closed-Magnetic-Switch-Door-Sensor-Alarm-Home-Window-Contact-Reed-/122892186998). 
 
-With the LED's and switches connected, you should be able to try out the functionality of the programme. If the doors are open (both switches are off) no LED is turned on. If the doors are closed (door-switch is on) the door-led is turned on. If the doors are locked (both door-switch and lock-switch is on), both the door-led and lock-led are turned on. 
-Note: In a real-life application, the lock-switch would not work. A different solution would have to be implemented.
-Note #2: The software does not account for the situation where the doors are opened, yet still locked. This is due to the fact that in real-life application, this should not be possible. 
+First, you need to setup your raspberry. I am using the latest release of Raspbian Stretch at the time of writing this (5th February 2019). You need to install Node-Red, unless it has already been installed. If you are not familiar with it, check some tutorials on how to use it. The official Node-Red website is a good source to begin with. You will also need to install mosquitto on your RPi (https://randomnerdtutorials.com/how-to-install-mosquitto-broker-on-raspberry-pi/). Set the Node-Red to start when the RPi boots and setup a static IP address for the RPi as well. Then import the flow (Node-Red-bathroom.txt) into the Node-Red. 
 
-To make the raspberry part work, you will need to install a bcm2835.h library. This library allows, among other things, to access the SPI on the raspberry pi. It can be downloaded from here:http://www.airspayce.com/mikem/bcm2835/index.html by following the instructions on the website. The website also has several examples, including examples for SPI usage. Additionally, if you are having problems with making the SPI work on your RPi, it may be due to the fact that the SPI is disabled on your RPi. By typing sudo raspi-config you should be able to access the configuration panel of your raspberry. In there, you will have to enable your SPI in Interface options. 
+The next step is to load your NodeMCU with the necessary code (Bathroom_door_ArduinoIDE.txt). Use Arduino IDE (or something else if you want, that is compatible with the NodeMCU) to upload the code in the repository. Don't forget to change the necessary things in the code (Wi-Fi name, Password, Server IP and etc.). You will need to download some things as well. The ESP8266 board manager; Adafruit ESP8266 library; Adafruit MQTT library and Adafruit SleepyDog. When you have everything ready, upload the code to the NodeMCU and connect the Switch with a resistor to the NodeMCU. For testing purposes, it is good to use a breadboard and if everything is working, make the circuit on a small veroboard. 
 
-Once you have the library installed, you will have to copy the Toiletdoor_rpi.c code into your raspberry. You will need to first compile the code in order to make it run. If you keep the same file name, the compilation command should look like so:
+If you have set up and uploaded everything correctly, you should be able to see the bathroom door status via Node-Red UI. If not, try to debug. Use serial monitor in Arduino IDE and debug node in the Node-Red.
 
-gcc -o Toiletdoor_rpi Toiletdoor_rpi.c -l bcm2835
+To incorporate a little bit of securit into the MQTT messaging, you can set a username and a password for the RPi mosquitto broker. 
 
-The last step is to connect the Atmega with the RPi. The connections should be as follows:
+First do this: sudo mosquitto_passwd -c /etc/mosquitto/passwd YourUsername
 
-RPi	       to                                 AVR
+You will be asked to enter a password for the username you chose.
 
-GPIO 10 - SPI0_MOSI          to               PINB3 - MOSI
+Second, include this in the mosquitto.conf file. 
 
-GPIO 9  - SPI0_MISO          to              PINB4 - MISO
+allow_anonymous false
+password_file /etc/mosquitto/passwd
 
-GPIO 11 - SPI0_SCLK          to               PINB5 - SCK
+To access this file, write: sudo nano /etc/mosquitto/mosquitto.conf
 
-GPIO 8  - SPI0_CS0_N         to               PINB2 - SS'
+This will prohibit others to publish messages or subscribe to your MQTT broker (RPi) unless they provide the right username and password, which means that this username and password will have to be the same on the NodeMCU side.
 
-GND                          to               GND         => Grounds have to be common. 
+Feel free to use this as an inspiration for other fun projects. I plan to expand this by some sort of control from the RPi side (e.g. a buzzer that will be triggered via Node-Red and buzz in the bathroom for a while to let someone in the bathroom know that you are in a hurry and need to use it). Or maybe adding a humidity/temperature sensor. You could also use this as a template for other rooms/things in your house/work/etc.
 
-Once this is connected, you should be able to receive the door status at on the RPi by executing the programme on the rasberry pi:
-
-sudo ./Toiletdoor_rpi
-
-
-As of now, the only real-life application would be the door-open / door-close status. Unfortunately, I have not made it work wirelessly yet. Once I will, I will update this repository. Hopefully, it will also be running on Node-RED at that time. 
-
-If you need any help with seting this up, feel free to contact me at my e-mail: dominik.kovacik18@gmail.com
+If you need any help with setting this up, feel free to contact me at my e-mail: dominik.kovacik18@gmail.com; where you also detail your problem. I will try to get to you as soon as I can. 
 
