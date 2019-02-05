@@ -58,5 +58,5 @@ This will prohibit others to publish messages or subscribe to your MQTT broker (
 
 Feel free to use this as an inspiration for other fun projects. I plan to expand this by some sort of control from the RPi side (e.g. a buzzer that will be triggered via Node-Red and buzz in the bathroom for a while to let someone in the bathroom know that you are in a hurry and need to use it). Or maybe adding a humidity/temperature sensor. You could also use this as a template for other rooms/things in your house/workplace/etc.
 
-If you need any help with setting this up, feel free to contact me at my e-mail: *dominik.kovacik18@gmail.com*, where you also detail your problem. I will try to get to you as soon as I can. :blush:
+If you need any help with setting this up, feel free to contact me at my e-mail: *dominik.kovacik18@gmail.com*, where you also detail your problem. I will try to get to you as soon as I can :relaxed:
 
