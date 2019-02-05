@@ -37,7 +37,7 @@ When you have everything ready, upload the code to the NodeMCU and connect the S
 
 If you have set up and uploaded everything correctly, you should be able to see the bathroom door status via Node-Red UI. If not, try to debug. Use serial monitor in Arduino IDE and debug node in the Node-Red.
 
-**Security:**
+## Security:
 
 To incorporate a little bit of securit into the MQTT messaging, you can set a username and a password for the RPi mosquitto broker. 
 
@@ -54,7 +54,7 @@ To access this file, write: *sudo nano /etc/mosquitto/mosquitto.conf*
 
 This will prohibit others to publish messages or subscribe to your MQTT broker (RPi) unless they provide the right username and password, which means that this username and password will have to be the same on the NodeMCU side.
 
-**Conclusion:**
+## Conclusion:
 
 Feel free to use this as an inspiration for other fun projects. I plan to expand this by some sort of control from the RPi side (e.g. a buzzer that will be triggered via Node-Red and buzz in the bathroom for a while to let someone in the bathroom know that you are in a hurry and need to use it). Or maybe adding a humidity/temperature sensor. You could also use this as a template for other rooms/things in your house/work/etc.
 
