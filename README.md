@@ -1,4 +1,4 @@
-#BathroomVacancy#
+# BathroomVacancy
 
 People say that necessity is the mother of invention. **False.** It is laziness and this project is a proof of that.
 
@@ -31,7 +31,7 @@ The next step is to load your NodeMCU with the necessary code (https://github.co
 
 *Adafruit ESP8266 library; Adafruit MQTT library and Adafruit SleepyDog*
 
-![image of circuit](https://github.com/DomiKov/toiletDoor/blob/master/Images/Adafruit_libraries.PNG). 
+![image of circuit](https://github.com/DomiKov/toiletDoor/blob/master/Images/Adarfuit_libraries.PNG). 
 
 When you have everything ready, upload the code to the NodeMCU and connect the Switch with a resistor to the NodeMCU. For testing purposes, it is good to use a breadboard and if everything is working, make the circuit on a small veroboard. 
 
