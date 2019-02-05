@@ -27,11 +27,11 @@ The next step is to load your NodeMCU with the necessary code (https://github.co
 
 *The ESP8266 board manager*
 
-![image of circuit](https://github.com/DomiKov/toiletDoor/blob/master/Images/ESP8266_board_manager.PNG). 
+![image of circuit](https://github.com/DomiKov/toiletDoor/blob/master/Images/ESP8266_board_manager.PNG)
 
 *Adafruit ESP8266 library; Adafruit MQTT library and Adafruit SleepyDog*
 
-![image of circuit](https://github.com/DomiKov/toiletDoor/blob/master/Images/Adarfuit_libraries.PNG). 
+![image of circuit](https://github.com/DomiKov/toiletDoor/blob/master/Images/Adarfuit_libraries.PNG) 
 
 When you have everything ready, upload the code to the NodeMCU and connect the Switch with a resistor to the NodeMCU. For testing purposes, it is good to use a breadboard and if everything is working, make the circuit on a small veroboard. 
 
@@ -56,7 +56,7 @@ This will prohibit others to publish messages or subscribe to your MQTT broker (
 
 ## Conclusion:
 
-Feel free to use this as an inspiration for other fun projects. I plan to expand this by some sort of control from the RPi side (e.g. a buzzer that will be triggered via Node-Red and buzz in the bathroom for a while to let someone in the bathroom know that you are in a hurry and need to use it). Or maybe adding a humidity/temperature sensor. You could also use this as a template for other rooms/things in your house/work/etc.
+Feel free to use this as an inspiration for other fun projects. I plan to expand this by some sort of control from the RPi side (e.g. a buzzer that will be triggered via Node-Red and buzz in the bathroom for a while to let someone in the bathroom know that you are in a hurry and need to use it). Or maybe adding a humidity/temperature sensor. You could also use this as a template for other rooms/things in your house/workplace/etc.
 
-If you need any help with setting this up, feel free to contact me at my e-mail: *dominik.kovacik18@gmail.com*, where you also detail your problem. I will try to get to you as soon as I can. 
+If you need any help with setting this up, feel free to contact me at my e-mail: *dominik.kovacik18@gmail.com*, where you also detail your problem. I will try to get to you as soon as I can. :blush:
 
